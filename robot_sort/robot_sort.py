@@ -96,8 +96,34 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        is_unsorted = True
+
+        while is_unsorted:
+            did_swap = False
+
+            while self.can_move_left():
+                self.move_left()
+
+            while self.can_move_right():
+                self.swap_item()
+                self.move_right()
+
+                comparison = self.compare_item()
+
+                if comparison == 1:
+                    self.swap_item()
+                    did_swap = True
+
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+
+            if did_swap == False:
+                is_unsorted = False
+
+# 
+# Execute code
+# 
 
 
 if __name__ == "__main__":
